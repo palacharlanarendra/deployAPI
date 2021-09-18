@@ -11,11 +11,14 @@ var profileRouter = require('./routes/profile');
 var questionsRouter = require('./routes/questions');
 var answersRouter = require('./routes/answers');
 
+require('dotenv').config();
+
 // mongoose connection
 mongoose.connect(
-  'mongodb://localhost/communityForum',
+  process.env.MONGO_DB,
   { useNewUrlParser: true, useUnifiedTopology: true },
   (err) => {
+    console.log(err);
     console.log('database connection', err ? false : true);
   }
 );
